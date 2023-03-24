@@ -49,7 +49,7 @@ public class InputService {
         messageHandler.displayToUser("adding coordinates..");
         var coor = new Coordinates(inputXLocation(), inputYLocation());
         messageHandler.displayToUser("done with coordinates..");
-        return coor;
+         return coor;
     }
     public Integer inputXLocation() throws NoSuchElementException, CommandInterruptionException {
         messageHandler.displayToUser("Enter X coordinate of location: ");

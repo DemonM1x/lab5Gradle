@@ -1,0 +1,15 @@
+show
+add
+tete
+30
+23
+13
+14
+12
+3
+2007-12-03T10:15:20
+2
+2
+execute_script src/script2.txt
+save
+exit

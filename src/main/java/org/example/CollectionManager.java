@@ -18,6 +18,7 @@ import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import static java.lang.Math.*;
+import static java.lang.System.getenv;
 
 public class CollectionManager implements CollectionCustom<City> {
     private TreeSet<City> cities;
@@ -33,14 +34,15 @@ public class CollectionManager implements CollectionCustom<City> {
             try {
                 Scanner scanner = new Scanner(System.in);
                 var pathToFile = "";
-                Map<String, String> env = System.getenv();
-                if (env != null && env.get("pathToXMLCollection") != null)
-                    pathToFile = env.get("pathToXMLCollection");
-                else {
-                    messageHandler.displayToUser("Enter a full path to XML file with collection or of the file where collection elements are " +
-                            "going to be stored to while being saved: ");
-                    pathToFile = scanner.nextLine();
-                }
+                pathToFile = getenv("lab5");
+//                Map<String, String> env = System.getenv();
+//                if (env != null && env.get("pathToXMLCollection") != null)
+//                    pathToFile = env.get("pathToXMLCollection");
+//                else {
+//                    messageHandler.displayToUser("Enter a full path to XML file with collection or of the file where collection elements are " +
+//                            "going to be stored to while being saved: ");
+//                    pathToFile = scanner.nextLine();
+//                }
                 xmlfile = new File(pathToFile);
                 fileManager.load(xmlfile);
                 cities = fileManager.get();
