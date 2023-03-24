@@ -7,11 +7,20 @@ import org.example.interfaces.CommandManagerCustom;
 
 import java.util.NoSuchElementException;
 
+/**
+ * this class represents the remove_lower command,
+ * which removes all elements smaller than the specified one from the collection
+ */
 public class RemoveLowerCommand extends CommandBase implements Command {
     public RemoveLowerCommand(CommandManagerCustom commandManager) {
         super(commandManager);
     }
 
+    /**
+     * the method removes all elements from the collection whose field values are less than the specified ones
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commandMessageHandler = commandManager.getMessageHandler();

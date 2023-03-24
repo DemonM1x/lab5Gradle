@@ -9,10 +9,20 @@ import org.example.interfaces.CommandManagerCustom;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
+/**
+ * this class represents the add command,
+ * which adds an item to the collection
+ */
 public class AddCommand extends CommandBase implements Command {
     public AddCommand(CommandManagerCustom commandManager){
         super(commandManager);
     }
+
+    /**
+     * the method adds an element to the collection
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commandMessageHandler = commandManager.getMessageHandler();

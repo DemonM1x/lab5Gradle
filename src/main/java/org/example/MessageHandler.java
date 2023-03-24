@@ -3,6 +3,9 @@ package org.example;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * this class communicates with the user
+ */
 public class MessageHandler {
     private final LinkedList<String> logs;
     {

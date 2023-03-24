@@ -5,11 +5,20 @@ import org.example.interfaces.CommandManagerCustom;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * this class represents the exit command,
+ * which exit from program without save
+ */
 public class ExitCommand extends CommandBase implements Command {
     public ExitCommand(CommandManagerCustom commandManager) {
         super(commandManager);
     }
 
+    /**
+     * the method exit from program
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commandMessageHandler = commandManager.getMessageHandler();

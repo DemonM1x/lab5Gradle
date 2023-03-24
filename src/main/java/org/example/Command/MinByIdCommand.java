@@ -3,11 +3,20 @@ package org.example.Command;
 import org.example.interfaces.Command;
 import org.example.interfaces.CommandManagerCustom;
 
+/**
+ * this class represents the min_by_id command,
+ * which display some object from element with minimal id
+ */
 public class MinByIdCommand extends CommandBase implements Command {
     public MinByIdCommand(CommandManagerCustom commandManager) {
         super(commandManager);
     }
 
+    /**
+     * the method display to user governor's birthday from element with minimal id
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commanMessageHendler = commandManager.getMessageHandler();

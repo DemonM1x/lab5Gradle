@@ -22,6 +22,9 @@ import java.util.stream.Collectors;
 
 import org.example.Collection.Cities;
 
+/**
+ * this class implements work with a xml file
+ */
 public class XmlFileHandler implements Loadable {
     private TreeSet<City> cities;
     private ZonedDateTime initializationTime;
@@ -38,12 +41,17 @@ public class XmlFileHandler implements Loadable {
         return true;
     }
 
+    /**
+     * the method load data from file
+     * @param xmlfile
+     * @throws NoAccessToFileException
+     * @throws FileLoadingException
+     */
     @Override
     public void load(File xmlfile) throws NoAccessToFileException, FileLoadingException {
 
 
         try {
-            var fileCreated = xmlfile.createNewFile();
             if (!checkPermission(xmlfile)) {
                 throw new NoAccessToFileException(xmlfile);
             }
@@ -70,6 +78,13 @@ public class XmlFileHandler implements Loadable {
         }
     }
 
+    /**
+     * the method save data to file
+     * @param city
+     * @param file
+     * @return
+     * @throws Exception
+     */
     @Override
     public boolean save(TreeSet<City> city, File file) throws Exception {
         try {
@@ -94,11 +109,19 @@ public class XmlFileHandler implements Loadable {
         return true;
     }
 
+    /**
+     * the method return initializationTime of collection
+     * @return
+     */
     @Override
     public ZonedDateTime getInitializationTime() {
         return initializationTime;
     }
 
+    /**
+     * the method return collection
+     * @return
+     */
     @Override
     public TreeSet<City> get() {
         return cities;

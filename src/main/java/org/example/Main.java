@@ -8,7 +8,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Main class creates manager objects and
+ * reads the entered data
+ */
 public class Main {
+    /**
+     * the method reads the entered data and calls executeCommand from CommandManager
+     * @param args
+     */
     public static void main(String[] args) {
         var mesHandler = new MessageHandler();
         var collection = new CollectionManager(new XmlFileHandler(), mesHandler);

@@ -10,6 +10,9 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * checks the validity of the input data
+ */
 public class InputService {
     private final MessageHandler messageHandler;
 
@@ -26,6 +29,13 @@ public class InputService {
     public void setScanner(Scanner scanner) {
         this.scanner = scanner;
     }
+
+    /**
+     * the method checks the validity of the name and returns it
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public String inputName() throws NoSuchElementException, CommandInterruptionException {
         for ( ; ; ) {
             try {
@@ -45,12 +55,26 @@ public class InputService {
             }
         }
     }
+
+    /**
+     * the method checks the validity of the coordinates and returns them
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public Coordinates inputCoordinates() throws NoSuchElementException, CommandInterruptionException {
         messageHandler.displayToUser("adding coordinates..");
         var coor = new Coordinates(inputXLocation(), inputYLocation());
         messageHandler.displayToUser("done with coordinates..");
          return coor;
     }
+
+    /**
+     * the method checks the validity of the X coordinate and returns it
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public Integer inputXLocation() throws NoSuchElementException, CommandInterruptionException {
         messageHandler.displayToUser("Enter X coordinate of location: ");
         for ( ; ; ) {
@@ -71,6 +95,13 @@ public class InputService {
             }
         }
     }
+
+    /**
+     * the method checks the validity of the Y coordinate and returns it
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public Integer inputYLocation()  throws NoSuchElementException, CommandInterruptionException {
         messageHandler.displayToUser("Enter Y coordinate of location: ");
         for ( ; ; ) {
@@ -91,6 +122,13 @@ public class InputService {
             }
         }
     }
+
+    /**
+     * the method checks the validity of the number and returns it
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public Integer getInt() throws NoSuchElementException, CommandInterruptionException {
         for ( ; ; ) {
             try {
@@ -108,11 +146,28 @@ public class InputService {
             }
         }
     }
+
+    /**
+     * the method display to user enum objects
+     * @param enumClass
+     * @param <T>
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public <T extends Enum<T>> void inputEnum(Class<T> enumClass) throws NoSuchElementException, CommandInterruptionException {
         var enums = enumClass.getEnumConstants();
         for(int i = 1; i <= enums.length; i++)
             messageHandler.displayToUser(enums[i - 1] + " - " + i);
     }
+
+    /**
+     * the method checks the validity of the number of enum object and returns it
+     * @param enumClass
+     * @return
+     * @param <T>
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public <T extends Enum<T>> Enum<T> readEnum(Class<T> enumClass) throws NoSuchElementException, CommandInterruptionException {
         var enums = enumClass.getEnumConstants();
         while (true){
@@ -136,6 +191,13 @@ public class InputService {
 
         }
     }
+
+    /**
+     * the method checks the validity of the area and returns it
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public float inputArea() throws NoSuchElementException,CommandInterruptionException{
         for ( ; ; ) {
             try {
@@ -167,6 +229,13 @@ public class InputService {
             }
         }
     }
+
+    /**
+     * the method checks the validity of the population and returns it
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public Long inputPopulation() throws NoSuchElementException, CommandInterruptionException{
         messageHandler.displayToUser("Enter population of city");
         for ( ; ; ) {
@@ -192,6 +261,13 @@ public class InputService {
             }
         }
     }
+
+    /**
+     * the method checks the validity of the metersAboveSeaLevel and returns it
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public double getDouble() throws NoSuchElementException, CommandInterruptionException{
         for ( ; ; ) {
             try {
@@ -210,6 +286,13 @@ public class InputService {
             }
         }
     }
+
+    /**
+     * the method checks the validity of the governor birthday and returns it
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public Human getPerson() throws NoSuchElementException,CommandInterruptionException{
         for ( ; ; ) {
             try {
@@ -232,6 +315,13 @@ public class InputService {
             }
         }
     }
+
+    /**
+     * the method checks the validity of the climate and returns it
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public Climate inputClimate() throws NoSuchElementException, CommandInterruptionException{
         for ( ; ; ) {
             try {
@@ -246,6 +336,13 @@ public class InputService {
             }
         }
     }
+
+    /**
+     * the method checks the validity of the government and returns it
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public Government inputGovernment() throws NoSuchElementException, CommandInterruptionException{
         for ( ; ; ) {
             try {
@@ -260,6 +357,13 @@ public class InputService {
             }
         }
     }
+
+    /**
+     * the method checks the validity of the standardOfLiving and returns it
+     * @return
+     * @throws NoSuchElementException
+     * @throws CommandInterruptionException
+     */
     public StandardOfLiving inputStandardOfLiving() throws NoSuchElementException, CommandInterruptionException{
         for ( ; ; ) {
             try {

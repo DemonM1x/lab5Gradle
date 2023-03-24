@@ -4,11 +4,21 @@ import org.example.Collection.City;
 import org.example.interfaces.Command;
 import org.example.interfaces.CommandManagerCustom;
 
+/**
+ * this class represents the remove_by_id command,
+ * which deletes a collection element by a given id
+ */
 public class RemoveByIdCommand extends CommandBase implements Command {
 
     public RemoveByIdCommand(CommandManagerCustom commandManager){
         super(commandManager);
     }
+
+    /**
+     * the method removes an element from the collection by its id
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commandMessageHandler = commandManager.getMessageHandler();

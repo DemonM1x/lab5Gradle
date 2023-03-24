@@ -8,11 +8,20 @@ import org.example.interfaces.CommandManagerCustom;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
+/**
+ *  this class represents the add_if_min command,
+ *  which add new element to the collection if element is minimal
+ */
 public class AddIfMinCommand extends CommandBase implements Command {
     public AddIfMinCommand(CommandManagerCustom commandManager) {
         super(commandManager);
     }
 
+    /**
+     * the method adds an element to the collection if element is minimal
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commandMessageHandler = commandManager.getMessageHandler();

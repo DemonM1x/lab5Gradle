@@ -10,7 +10,6 @@ import org.example.Service.WayOfOrder;
 import org.example.interfaces.CollectionCustom;
 import org.example.interfaces.Loadable;
 
-import javax.swing.undo.UndoManager;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -20,13 +19,23 @@ import java.util.stream.Collectors;
 import static java.lang.Math.*;
 import static java.lang.System.getenv;
 
+/**
+ * this class gets a collection,
+ * loads data from a file to a collection,
+ * saves data from a collection to a file
+ */
 public class CollectionManager implements CollectionCustom<City> {
     private TreeSet<City> cities;
     private File xmlfile;
     private final Loadable fileManager;
     private ZonedDateTime initializationTime;
     private final MessageHandler messageHandler;
-    private UndoManager undoManager = null;
+
+    /**
+     * constructor for getting data from a file and saving it to a collection
+     * @param fileManager
+     * @param messageHandler
+     */
     public CollectionManager(Loadable fileManager, MessageHandler messageHandler) {
         this.fileManager = fileManager;
         this.messageHandler = messageHandler;
@@ -66,7 +75,10 @@ public class CollectionManager implements CollectionCustom<City> {
         }
     }
 
-
+    /**
+     * the method for checks validation of date in file
+     * @return
+     */
     @Override
     public boolean validateData() {
         if (cities.isEmpty())
@@ -95,21 +107,36 @@ public class CollectionManager implements CollectionCustom<City> {
 
     }
 
+    /**
+     * the method return collection
+     * @return
+     */
     @Override
     public TreeSet<City> get() {
         return cities;
     }
 
+    /**
+     * the method return initializationTime of collection
+     * @return
+     */
     @Override
     public ZonedDateTime getInitializationTime() {
         return initializationTime;
     }
 
+    /**
+     * the method return collection type
+     * @return
+     */
     @Override
     public Class getElementType() {
         return City.class;
     }
 
+    /**
+     * the method checks validation of date and calls save from XmlFieHandler
+     */
     @Override
     public void save() {
         try {

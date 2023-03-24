@@ -8,10 +8,20 @@ import org.example.interfaces.CommandManagerCustom;
 import java.util.NoSuchElementException;
 
 public class StartsNameCommand extends CommandBase implements Command {
+    /**
+     * this class represents the filter_starts_with_name command,
+     * which, display to user the collection elements whose name begins with the specified substring
+     * @param commandManager
+     */
     public StartsNameCommand(CommandManagerCustom commandManager) {
         super(commandManager);
     }
 
+    /**
+     * the method checks the collection for emptiness and outputs all elements whose name begins with the specified substring
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commandMessageHandler = commandManager.getMessageHandler();

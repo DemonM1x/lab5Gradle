@@ -9,8 +9,7 @@ import java.util.List;
 public interface CommandManagerCustom {
     /** executes given command */
     boolean executeCommand(String userInput);
-    /** gets the history of executed commands */
-    List<String> getCommandHistory();
+
     /** gets the info about each command */
     List<String> getCommandsInfo();
     /** gets input service */

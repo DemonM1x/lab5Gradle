@@ -5,11 +5,20 @@ import org.example.CommandManager;
 import org.example.interfaces.Command;
 import org.example.interfaces.CommandManagerCustom;
 
+/**
+ * this class represents the show command,
+ * which display to user the collection elements
+ */
 public class ShowCommand extends CommandBase implements Command {
     public ShowCommand(CommandManagerCustom commandManager){
         super(commandManager);
     }
 
+    /**
+     * the method checks for emptiness. Displays the elements of the collection
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commandMessageHandler = commandManager.getMessageHandler();

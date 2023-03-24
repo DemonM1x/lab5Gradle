@@ -6,11 +6,20 @@ import org.example.interfaces.CommandManagerCustom;
 
 import java.time.format.DateTimeFormatter;
 
+/**
+ * this class represents the info command,
+ * which display to user info about collection
+ */
 public class InfoCommand extends CommandBase implements Command {
     public InfoCommand(CommandManagerCustom commandManager) {
         super(commandManager);
     }
 
+    /**
+     * the method shows some data about the collection
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var cities = commandManager.getCollectionManager().get();

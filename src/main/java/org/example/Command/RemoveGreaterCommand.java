@@ -6,11 +6,20 @@ import org.example.interfaces.CommandManagerCustom;
 
 import java.util.NoSuchElementException;
 
+/**
+ * this class represents the remove_greater command,
+ * which removes all elements with fields larger than the specified ones from the collection
+ */
 public class RemoveGreaterCommand extends CommandBase implements Command {
     public RemoveGreaterCommand(CommandManagerCustom commandManager) {
         super(commandManager);
     }
 
+    /**
+     * the method removes elements from collection with fields larger than the specified ones
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commandMessageHandler = commandManager.getMessageHandler();

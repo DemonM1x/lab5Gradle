@@ -5,6 +5,9 @@ import java.text.ParseException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * this class formats ZonedDateTime for parsing
+ */
 public class DateTimeAdapterZoned extends XmlAdapter<String, ZonedDateTime> {
     DateTimeFormatter ISO_FORMATTER = DateTimeFormatter.ISO_DATE_TIME;
     @Override

@@ -5,6 +5,9 @@ import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * this class formats localDateTime for parsing
+ */
 public class DateTimeAdapterLocal extends XmlAdapter<String, LocalDateTime> {
     DateTimeFormatter ISO_FORMATTER = DateTimeFormatter.ISO_DATE_TIME;
     @Override

@@ -12,17 +12,25 @@ import org.example.interfaces.CommandManagerCustom;
 import java.io.*;
 import java.util.*;
 
+/**
+ * this class represents the execute_script command,
+ * which reads and executes a script from the specified file
+ */
 public class ExecuteScriptCommand extends CommandBase implements Command {
 
 
     private final LinkedList<String> scriptFilesBeingExecuted;
     private int recDepth = -1;
-
     public ExecuteScriptCommand(CommandManagerCustom commandManager) {
         super(commandManager);
         scriptFilesBeingExecuted = new LinkedList<>();
     }
 
+    /**
+     * the method that is called when catching some error
+     * @return
+     * @throws CommandInterruptionException
+     */
     private int specifyRecDepth() throws CommandInterruptionException {
         var commandMessageHandler = commandManager.getMessageHandler();
         commandMessageHandler.displayToUser("WARNING. Recursion is detected.");
@@ -45,6 +53,11 @@ public class ExecuteScriptCommand extends CommandBase implements Command {
         }
     }
 
+    /**
+     * the method reads commands from the script and executes them
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commandMessageHandler = commandManager.getMessageHandler();
@@ -63,7 +76,6 @@ public class ExecuteScriptCommand extends CommandBase implements Command {
 
             Scanner reader = new Scanner(new FileReader(args[0]));
             commandManager.getInputService().setScanner(reader);
-            String[] finalUserCommand;
             String command;
             while (reader.hasNext() && (command = reader.nextLine()) != null) {
                 commandManager.executeCommand(command);

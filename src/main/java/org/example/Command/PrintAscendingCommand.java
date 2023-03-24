@@ -11,11 +11,20 @@ import java.util.ArrayList;
 import java.util.SimpleTimeZone;
 import java.util.stream.Collectors;
 
+/**
+ * this class represents the print_ascending command,
+ * which display to user all fields of elements in normal order
+ */
 public class PrintAscendingCommand extends CommandBase implements Command {
     public PrintAscendingCommand(CommandManagerCustom commandManager) {
         super(commandManager);
     }
 
+    /**
+     * the method display to user all fields of elements in the default sorting
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commandMessageHandler = commandManager.getMessageHandler();

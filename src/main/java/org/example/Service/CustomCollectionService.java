@@ -3,6 +3,9 @@ package org.example.Service;
 import java.util.List;
 import java.util.TreeSet;
 
+/**
+ * this class is custom comparator
+ */
 public class CustomCollectionService {
     public static <T extends Comparable<T>> WayOfOrder determineWayOfOrder(List<T> elements) {
         boolean up = true, down = true;

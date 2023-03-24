@@ -8,6 +8,10 @@ import org.example.interfaces.CommandManagerCustom;
 
 import java.util.InputMismatchException;
 
+/**
+ * this class represents the update_id command,
+ * which updates the value of a collection item whose id is equal to the specified one
+ */
 public class UpdateIdCommand extends CommandBase implements Command {
     private final InputService inputService;
     {
@@ -17,6 +21,11 @@ public class UpdateIdCommand extends CommandBase implements Command {
         super(commandManager);
     }
 
+    /**
+     * the method checks elements for the existence of an element with this id and updates the value of its fields
+     * @param args
+     * @return
+     */
     @Override
     public boolean execute(String[] args) {
         var commandMessageHandler = commandManager.getMessageHandler();
