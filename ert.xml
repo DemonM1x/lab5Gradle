@@ -83,11 +83,59 @@
     <city>
         <id>6</id>
         <name>tete</name>
+        <COORDINATES>
+            <x>30</x>
+            <y>23</y>
+        </COORDINATES>
+        <creationDate>2023-03-24T17:51:01.7825867+03:00[Europe/Moscow]</creationDate>
+        <area>13.0</area>
+        <population>14</population>
+        <metersAboveSeaLevel>12.0</metersAboveSeaLevel>
+        <climate>STEPPE</climate>
+        <governor>
+            <birthday>2007-12-03T10:15:20</birthday>
+        </governor>
+    </city>
+    <city>
+        <id>7</id>
+        <name>tete</name>
         <coordinates>
             <x>30</x>
             <y>23</y>
         </coordinates>
-        <creationDate>2023-03-24T17:51:01.7825867+03:00[Europe/Moscow]</creationDate>
+        <creationDate>2023-03-25T14:28:04.0322369+03:00[Europe/Moscow]</creationDate>
+        <area>13.0</area>
+        <population>14</population>
+        <metersAboveSeaLevel>12.0</metersAboveSeaLevel>
+        <climate>STEPPE</climate>
+        <governor>
+            <birthday>2007-12-03T10:15:20</birthday>
+        </governor>
+    </city>
+    <city>
+        <id>8</id>
+        <name>tete</name>
+        <coordinates>
+            <x>30</x>
+            <y>23</y>
+        </coordinates>
+        <creationDate>2023-03-25T14:30:30.9736095+03:00[Europe/Moscow]</creationDate>
+        <area>13.0</area>
+        <population>14</population>
+        <metersAboveSeaLevel>12.0</metersAboveSeaLevel>
+        <climate>STEPPE</climate>
+        <governor>
+            <birthday>2007-12-03T10:15:20</birthday>
+        </governor>
+    </city>
+    <city>
+        <id>9</id>
+        <name>tete</name>
+        <coordinates>
+            <x>30</x>
+            <y>23</y>
+        </coordinates>
+        <creationDate>2023-03-25T15:42:18.0094041+03:00[Europe/Moscow]</creationDate>
         <area>13.0</area>
         <population>14</population>
         <metersAboveSeaLevel>12.0</metersAboveSeaLevel>

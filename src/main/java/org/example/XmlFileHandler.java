@@ -1,26 +1,18 @@
 package org.example;
 
-import com.sun.source.tree.Tree;
-import org.example.Collection.City;
-import org.example.Exceptions.FileLoadingException;
-import org.example.Exceptions.NoAccessToFileException;
+import org.example.сollection.City;
+import org.example.exceptions.FileLoadingException;
+import org.example.exceptions.NoAccessToFileException;
 import org.example.interfaces.Loadable;
 
 import javax.xml.bind.*;
-import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import java.io.*;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
-import org.example.Collection.Cities;
+import org.example.сollection.Cities;
 
 /**
  * this class implements work with a xml file
@@ -63,14 +55,14 @@ public class XmlFileHandler implements Loadable {
             }
 
             XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
-            var bufferedReader = new FileReader(xmlfile);
+            var bufferedReader = new BufferedReader(new FileReader(xmlfile));
 
             XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(bufferedReader);
 
             JAXBContext context = JAXBContext.newInstance(Cities.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             cities = unmarshaller.unmarshal(xmlEventReader, Cities.class).getValue().getCities();
-
+            System.out.println(cities);
 
             System.out.println("loaded " + " cities: " + cities.size());
         } catch (Exception jaxbException) {

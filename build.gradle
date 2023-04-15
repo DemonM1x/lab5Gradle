@@ -11,7 +11,7 @@ repositories {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'src.Main'
+        attributes 'Main-Class': 'org.example.Main'
     }
     from {
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE

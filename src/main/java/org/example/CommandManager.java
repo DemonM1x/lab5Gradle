@@ -1,9 +1,9 @@
 package org.example;
 
-import org.example.Collection.City;
-import org.example.Command.*;
-import org.example.Container.CommandsContainer;
-import org.example.Service.InputService;
+import org.example.сollection.City;
+import org.example.сommand.*;
+import org.example.сontainer.CommandsContainer;
+import org.example.service.InputService;
 import org.example.interfaces.CollectionCustom;
 import org.example.interfaces.Command;
 import org.example.interfaces.CommandManagerCustom;

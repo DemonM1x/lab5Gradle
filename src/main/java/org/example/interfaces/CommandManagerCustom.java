@@ -1,9 +1,9 @@
 package org.example.interfaces;
 
-import org.example.Collection.City;
+import org.example.сollection.City;
 
 import org.example.MessageHandler;
-import org.example.Service.InputService;
+import org.example.service.InputService;
 import java.util.List;
 
 public interface CommandManagerCustom {

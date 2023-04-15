@@ -1,22 +1,20 @@
 package org.example;
 
-import com.sun.source.tree.Tree;
-import org.example.Collection.Cities;
-import org.example.Collection.City;
-import org.example.Collection.Human;
-import org.example.Exceptions.NoAccessToFileException;
-import org.example.Service.CustomCollectionService;
-import org.example.Service.WayOfOrder;
+import org.example.сollection.City;
+import org.example.exceptions.NoAccessToFileException;
+import org.example.service.CustomCollectionService;
+import org.example.service.WayOfOrder;
 import org.example.interfaces.CollectionCustom;
 import org.example.interfaces.Loadable;
 
 import java.io.File;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
-import static java.lang.Math.*;
+
+import static java.lang.Math.min;
 import static java.lang.System.getenv;
 
 /**
@@ -33,6 +31,7 @@ public class CollectionManager implements CollectionCustom<City> {
 
     /**
      * constructor for getting data from a file and saving it to a collection
+     *
      * @param fileManager
      * @param messageHandler
      */
@@ -41,17 +40,9 @@ public class CollectionManager implements CollectionCustom<City> {
         this.messageHandler = messageHandler;
         for (; ; ) {
             try {
-                Scanner scanner = new Scanner(System.in);
+
                 var pathToFile = "";
                 pathToFile = getenv("lab5");
-//                Map<String, String> env = System.getenv();
-//                if (env != null && env.get("pathToXMLCollection") != null)
-//                    pathToFile = env.get("pathToXMLCollection");
-//                else {
-//                    messageHandler.displayToUser("Enter a full path to XML file with collection or of the file where collection elements are " +
-//                            "going to be stored to while being saved: ");
-//                    pathToFile = scanner.nextLine();
-//                }
                 xmlfile = new File(pathToFile);
                 fileManager.load(xmlfile);
                 cities = fileManager.get();
@@ -64,7 +55,7 @@ public class CollectionManager implements CollectionCustom<City> {
                 boolean up = true, down = true;
                 var wayOfOrder = CustomCollectionService.determineWayOfOrder(cities.stream().toList());
                 if (wayOfOrder == WayOfOrder.NON)
-                    cities = cities.stream().sorted((p,p1) -> (int)(p1.getId()) - p.getId()).collect(Collectors.toCollection(TreeSet::new));
+                    cities = cities.stream().sorted((p, p1) -> (int) (p1.getId()) - p.getId()).collect(Collectors.toCollection(TreeSet::new));
                 initializationTime = ZonedDateTime.now();
                 return;
             } catch (NoAccessToFileException exception) {
@@ -77,6 +68,7 @@ public class CollectionManager implements CollectionCustom<City> {
 
     /**
      * the method for checks validation of date in file
+     *
      * @return
      */
     @Override
@@ -84,31 +76,29 @@ public class CollectionManager implements CollectionCustom<City> {
         if (cities.isEmpty())
             return true;
         var citiesId = new HashSet<Integer>();
-        for (var city: cities){
+        for (var city : cities) {
 
             if (city.getName() == null || city.getName().isEmpty() || city.getCoordinates() == null ||
                     city.getCoordinates().getX() == null ||
-            city.getCreationDate() == null || city.getCoordinates().getY() == null || city.getArea() <= 0 ||
+                    city.getCreationDate() == null || city.getCoordinates().getY() == null || city.getArea() <= 0 ||
                     city.getPopulation() == null || city.getPopulation() < 1 || city.getClimate() == null ||
-                    city.getGovernor() == null){
+                    city.getGovernor() == null) {
                 return false;
             }
             citiesId.add(city.getId());
         }
         var ids = citiesId.toArray();
         var minId = Integer.MAX_VALUE;
-        for(var id : ids){
+        for (var id : ids) {
             minId = min((Integer) id, minId);
         }
-        if (minId < 1 || ids.length < cities.size()){
-            return false;
-        }
-        return true;
+        return minId >= 1 && ids.length >= cities.size();
 
     }
 
     /**
      * the method return collection
+     *
      * @return
      */
     @Override
@@ -118,6 +108,7 @@ public class CollectionManager implements CollectionCustom<City> {
 
     /**
      * the method return initializationTime of collection
+     *
      * @return
      */
     @Override
@@ -127,6 +118,7 @@ public class CollectionManager implements CollectionCustom<City> {
 
     /**
      * the method return collection type
+     *
      * @return
      */
     @Override
