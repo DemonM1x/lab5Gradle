@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class ScriptReader {
     private static ArrayList<String> historyOfFiles = new ArrayList<>();
-    private static ArrayList<String> readedCommands = new ArrayList<String>();
+    private static ArrayList<String> readiedCommands = new ArrayList<>();
     private static Integer currentCommand;
     private static String file;
     private static boolean executeStatus = false;
@@ -19,11 +19,11 @@ public class ScriptReader {
     public static Integer getCurrentCommand() {
         return currentCommand;
     }
-    public static ArrayList<String> getReadedCommands() {
-        return readedCommands;
+    public static ArrayList<String> getReadiedCommands() {
+        return readiedCommands;
     }
     public static void clearHistory(){
-        historyOfFiles = new ArrayList<String>();
+        historyOfFiles = new ArrayList<>();
     }
     public static void setExecuteStatus(boolean executeStatus1){
         executeStatus = executeStatus1;
@@ -42,23 +42,22 @@ public class ScriptReader {
         } else {
             historyOfFiles.add(file);
             currentCommand = 0;
-            readedCommands = new FileReader().readFile(file);
+            readiedCommands = new FileReader().readFile(file);
             int iter = 0;
 
-            if (readedCommands.size() != 0) {
+            if (readiedCommands.size() != 0) {
                 setExecuteStatus(true);
-                while (iter < readedCommands.size()) {
-                    String commandLine = readedCommands.get(iter);
+                while (iter < readiedCommands.size()) {
+                    String commandLine = readiedCommands.get(iter);
                     if (new CommandValidator().validate(commandLine) != DataInOutStatus.SUCCESSFULLY) {
-                        MessageHandler.displayToUser(execution.append("Check correctness of commands in your script '" + file
-                                + "'. Failed.\nSome commands can be completed.").toString());
+                        MessageHandler.displayToUser(execution.append("Check correctness of commands in your script '").append(file).append("'. Failed.\nSome commands can be completed.").toString());
                     }
                     currentCommand++;
                     iter = currentCommand;
                 }
                 setExecuteStatus(false);
             } else {
-                MessageHandler.displayToUser(execution.append("There are some errors with file '" + file + "'. Try again.").toString());
+                MessageHandler.displayToUser(execution.append("There are some errors with file '").append(file).append("'. Try again.").toString());
             }
         }
     }

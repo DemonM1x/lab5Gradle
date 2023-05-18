@@ -8,16 +8,13 @@ import java.util.HashMap;
  * this class adds commands to the commandsСontainer and checks for the existence of a command in the container
  */
 public class CommandManager{
-    private final Receiver receiver;
     private final HashMap<String, AbstractCommand> commandsMap;
     /**
      * the constructor accepts commands as input and adds them to the commandsContainer
-     * @param receiver
      */
     public CommandManager(Receiver receiver){
-        this.receiver = receiver;
         commandsMap = new HashMap<>();
-        var helpCommand = new HelpCommand(receiver, commandsMap.values());
+        var helpCommand = new HelpCommand(commandsMap.values());
         var infoCommand = new InfoCommand(receiver);
         var clearCommand = new ClearCommand(receiver);
         var showCommand = new ShowCommand(receiver);

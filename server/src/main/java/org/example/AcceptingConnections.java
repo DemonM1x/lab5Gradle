@@ -21,14 +21,11 @@ import java.util.logging.Logger;
 public class AcceptingConnections{
 
     private final Deliver deliver;
-    private XmlFileHandler xmlFileHandler;
-    private Receiver receiver;
 
     private final ServerSocketChannel serverSocket;
-    private Selector selector;
-    private Map<SocketChannel, ByteBuffer> buffers;
-    private Map<SocketChannel, InetSocketAddress> addresses;
-    private final int bufferSize = 4096;
+    private final Selector selector;
+    private final Map<SocketChannel, ByteBuffer> buffers;
+    private final Map<SocketChannel, InetSocketAddress> addresses;
 
     private final Logger logger;
 
@@ -45,8 +42,6 @@ public class AcceptingConnections{
     }
 
     public void start(XmlFileHandler xmlFileHandler, Receiver receiver) {
-        this.xmlFileHandler = xmlFileHandler;
-        this.receiver = receiver;
 
         try {
             while (true) {
@@ -60,6 +55,7 @@ public class AcceptingConnections{
                         logger.info("Сервер соединился с" + socketChannel.getRemoteAddress());
                         socketChannel.configureBlocking(false);
                         socketChannel.register(selector, SelectionKey.OP_READ);
+                        int bufferSize = 4096;
                         buffers.put(socketChannel, ByteBuffer.allocate(bufferSize));
                     } else if (key.isReadable()) {
                         SocketChannel socketChannel = (SocketChannel) key.channel();
@@ -85,7 +81,7 @@ public class AcceptingConnections{
                             continue;
                         }
                         else {
-                            logger.info("Server received command: " + request.toString());
+                            logger.info("Server received command: " + request);
                             deliver.answer(request, socketChannel);
                         }
 

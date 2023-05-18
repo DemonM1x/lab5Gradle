@@ -1,7 +1,6 @@
 package org.example.DataAdapters;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
-import java.text.ParseException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -14,7 +13,7 @@ public class DateTimeAdapterZoned extends XmlAdapter<String, ZonedDateTime> {
     public String marshal(ZonedDateTime v){
         return v.format(ISO_FORMATTER);
     }
-    public ZonedDateTime unmarshal(String v)throws ParseException{
+    public ZonedDateTime unmarshal(String v) {
         return ZonedDateTime.parse(v);
     }
 }

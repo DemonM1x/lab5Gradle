@@ -1,8 +1,6 @@
 package org.example.validatorClient;
 
-import org.example.сollection.Climate;
-import org.example.сollection.Government;
-import org.example.сollection.StandardOfLiving;
+import org.example.collection.StandardOfLiving;
 
 public class ValidateStandardOfLiving extends ValidateAbstract<StandardOfLiving>{
     public  ValidateStandardOfLiving(){

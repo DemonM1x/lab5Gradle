@@ -1,8 +1,8 @@
 package org.example;
 
-import java.io.*;
-import java.net.InetSocketAddress;
-import java.net.Socket;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.util.logging.Logger;
@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 public class Deliver {
     private final CommandManager commandManager;
     private final UniqueId uniqueId;
-    private final Logger logger;
 
     public Deliver(CommandManager aCommandManager, UniqueId uniqueId, Logger aLogger) {
         if (aCommandManager == null || uniqueId == null || aLogger == null) {
@@ -18,7 +17,6 @@ public class Deliver {
         }
         commandManager = aCommandManager;
         this.uniqueId = uniqueId;
-        logger = aLogger;
     }
 
     public void answer(Request request, SocketChannel client){

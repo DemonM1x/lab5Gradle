@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.сollection.City;
+import org.example.collection.City;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -59,11 +59,4 @@ public class Response implements Serializable {
         return byteOutputStream.toByteArray().length;
     }
 
-    public byte[] toByteArray() throws IOException {
-        ByteArrayOutputStream byteOutputStream = new ByteArrayOutputStream();
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteOutputStream);
-        objectOutputStream.writeObject(this);
-        objectOutputStream.flush();
-        return byteOutputStream.toByteArray();
-    }
 }

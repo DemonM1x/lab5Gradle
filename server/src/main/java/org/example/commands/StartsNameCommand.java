@@ -3,7 +3,7 @@ package org.example.commands;
 import org.example.Receiver;
 import org.example.Request;
 import org.example.Response;
-import org.example.сollection.City;
+import org.example.collection.City;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -14,7 +14,6 @@ public class StartsNameCommand extends AbstractCommand implements Execute {
     /**
      * this class represents the filter_starts_with_name command,
      * which, display to user the collection elements whose name begins with the specified substring
-     * @param receiver
      */
     private final Receiver receiver;
     public StartsNameCommand(Receiver receiver) {
@@ -25,8 +24,6 @@ public class StartsNameCommand extends AbstractCommand implements Execute {
 
     /**
      * the method checks the collection for emptiness and outputs all elements whose name begins with the specified substring
-     * @param request
-     * @return
      */
     @Override
     public Response execute(Request request) {

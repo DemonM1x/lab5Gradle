@@ -1,18 +1,15 @@
 package org.example;
 
-import org.example.сollection.City;
+import org.example.collection.City;
 
 import java.util.Date;
-import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
-import java.util.logging.Logger;
 
 public class Receiver {
-    private TreeSet<City> cities;
+    private final TreeSet<City> cities;
     private final Stack<Integer> usedId;
     private int highUsedId;
-    public static final Logger logger = null;
 
     private final LocalDateBase localDateBase;
 

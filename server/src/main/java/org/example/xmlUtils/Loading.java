@@ -1,9 +1,8 @@
 package org.example.xmlUtils;
 
 import org.example.exception.NoAccessToFileException;
-import org.example.сollection.City;
+import org.example.collection.City;
 
-import java.io.File;
 import java.time.ZonedDateTime;
 import java.util.TreeSet;
 

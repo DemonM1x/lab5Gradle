@@ -1,4 +1,4 @@
-package org.example.сollection;
+package org.example.collection;
 
 import org.example.annotation.Complex;
 import org.example.DataAdapters.DateTimeAdapterZoned;

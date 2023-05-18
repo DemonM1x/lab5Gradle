@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.сollection.City;
+import org.example.collection.City;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -43,14 +43,4 @@ public class Request implements Serializable {
                 + (city != null ? "\n"+city : "");
     }
 
-    public boolean isArgInt() {
-        try {
-            if (argName != null) {
-                Integer.parseInt(String.valueOf(argName));
-                return true;
-            } else return false;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
 }

@@ -8,16 +8,9 @@ import java.util.LinkedHashMap;
 public class MetaInfoCommand {
     private  static LinkedHashMap<String, String> fields;
 
-
-    /*взяли все команды из Invoker*/
     public MetaInfoCommand() {
- //       mapOfCommand = Invoker.getCommandsMap();
         fields = new FieldFetcher().fetchFields();
     }
-
-//    public HashMap<String, AbstractCommand> getMapOfCommand() {
-//        return mapOfCommand;
-//    }
 
     public static LinkedHashMap<String, String> getFields() {
         return fields;

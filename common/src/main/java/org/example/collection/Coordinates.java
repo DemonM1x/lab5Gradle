@@ -1,9 +1,8 @@
-package org.example.сollection;
+package org.example.collection;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import java.util.Objects;
 
 @XmlRootElement(name="coordinates")
 public class Coordinates implements Serializable {

@@ -1,32 +1,17 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**Class to separate name and arguments for a command*/
 public class CommandValidator {
-    private String commandName;
-    private ArrayList<String> commandArguments = new ArrayList<>();
-    private String args = null;
+    private final ArrayList<String> commandArguments = new ArrayList<>();
 
     public DataInOutStatus validate(String inputData) {
-        String[] splitedInputData = inputData.split(" ");
-        commandName = splitedInputData[0];
-        for (int i = 1; i < splitedInputData.length; i++) {
-            commandArguments.add(splitedInputData[i]);
-        }
-        return new CommandChecker().checkCorrectnessOfCommand(commandName , commandArguments);
+        String[] splitInputData = inputData.split(" ");
+        String commandName = splitInputData[0];
+        commandArguments.addAll(Arrays.asList(splitInputData).subList(1, splitInputData.length));
+        return new CommandChecker().checkCorrectnessOfCommand(commandName, commandArguments);
     }
 
-
-    public String[] splitter(String inputData) {
-        String[] splittedInputData = inputData.split(" ");
-        commandName = splittedInputData[0];
-        for (int i = 1; i < splittedInputData.length; i++) {
-            args += splittedInputData[i];
-        }
-        return new String[] {commandName, args};
-    }
-    public ArrayList<String> getCommandArguments(){
-        return commandArguments;
-    }
 }

@@ -3,8 +3,6 @@ package org.example.commands;
 import org.example.Request;
 import org.example.Response;
 
-import java.util.ArrayList;
-
 public class ExecuteScriptCommand extends AbstractCommand implements Execute {
 
     public ExecuteScriptCommand() {

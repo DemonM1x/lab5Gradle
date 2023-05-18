@@ -1,7 +1,7 @@
 package org.example;
 
 
-import org.example.сollection.City;
+import org.example.collection.City;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

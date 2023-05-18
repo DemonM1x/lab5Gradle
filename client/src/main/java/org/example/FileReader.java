@@ -9,16 +9,15 @@ import java.util.Scanner;
 public class FileReader {
     public ArrayList<String> readFile(String fileName) {
         ArrayList<String> linesArrayList = new ArrayList<>();
-        String filepath = fileName;
-        MessageHandler.displayToUser("Name of file: '" + fileName + "'.\nFilePath: '" + filepath + "'.");
+        MessageHandler.displayToUser("Name of file: '" + fileName + "'.\nFilePath: '" + fileName + "'.");
         try {
-            Scanner sc = new Scanner(new File(filepath));
+            Scanner sc = new Scanner(new File(fileName));
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 linesArrayList.add(line);
             }
             sc.close();
-            MessageHandler.displayToUser("File was readed successfully.");
+            MessageHandler.displayToUser("File was readied successfully.");
             return linesArrayList;
         } catch (IOException | NullPointerException e) {
             MessageHandler.displayToUser("Error with file, check path of the file. Check file's format: '<filename>.<FileFormat>'.`");

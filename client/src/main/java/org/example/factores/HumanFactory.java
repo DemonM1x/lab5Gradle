@@ -1,6 +1,6 @@
 package org.example.factores;
 
-import org.example.сollection.Human;
+import org.example.collection.Human;
 
 import java.time.LocalDateTime;
 

@@ -4,10 +4,9 @@ import org.example.commands.ExitSaver;
 import org.example.exception.FileLoadingException;
 import org.example.exception.NoAccessToFileException;
 import org.example.xmlUtils.XmlFileHandler;
-import org.example.сollection.City;
+import org.example.collection.City;
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.net.SocketAddress;
 import java.nio.channels.ServerSocketChannel;
 import java.util.logging.Logger;
@@ -46,11 +45,7 @@ public class MainServer {
             Runtime.getRuntime().addShutdownHook(new Thread(new ExitSaver(xmlFileHandler,receiver)));
             connect.start(xmlFileHandler, receiver);
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (FileLoadingException e) {
-            throw new RuntimeException(e);
-        } catch (NoAccessToFileException e) {
+        } catch (IOException | FileLoadingException | NoAccessToFileException e) {
             throw new RuntimeException(e);
         }
     }

@@ -1,7 +1,6 @@
 package org.example.DataAdapters;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
-import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -14,7 +13,7 @@ public class DateTimeAdapterLocal extends XmlAdapter<String, LocalDateTime> {
     public String marshal(LocalDateTime v){
         return v.format(ISO_FORMATTER);
     }
-    public LocalDateTime unmarshal(String v)throws ParseException {
+    public LocalDateTime unmarshal(String v) {
         return LocalDateTime.parse(v);
     }
 }

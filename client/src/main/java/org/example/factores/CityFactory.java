@@ -1,11 +1,8 @@
 package org.example.factores;
 
 
-import org.example.сollection.*;
+import org.example.collection.*;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
 public class CityFactory {

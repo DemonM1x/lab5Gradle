@@ -15,10 +15,6 @@ public class MessageHandler {
     public static void displayToUser(String message){
         System.out.println(message);
     }
-    /** logs the message to log collection */
-    public void log(String message){
-        logs.add(message);
-    }
 
     /**
      *  gets the logs collection

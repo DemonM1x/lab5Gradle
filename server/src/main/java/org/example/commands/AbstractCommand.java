@@ -3,10 +3,12 @@ package org.example.commands;
 import org.example.Request;
 import org.example.Response;
 
+import java.util.Objects;
+
 public abstract class AbstractCommand implements Execute {
-    private String name;
-    private String description;
-    private String fullname;
+    private final String name;
+    private final String description;
+    private final String fullname;
 
 
     public AbstractCommand(String name, String description  , String fullname ) {
@@ -20,7 +22,7 @@ public abstract class AbstractCommand implements Execute {
 
     @Override
     public String toString() {
-        if(fullname == ""){
+        if(Objects.equals(fullname, "")){
             return name + " - " + description;
         }
         return name + " " + fullname + " - " + description;

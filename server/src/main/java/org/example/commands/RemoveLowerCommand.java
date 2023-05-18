@@ -3,7 +3,7 @@ package org.example.commands;
 import org.example.Receiver;
 import org.example.Request;
 import org.example.Response;
-import org.example.сollection.City;
+import org.example.collection.City;
 
 public class RemoveLowerCommand extends AbstractCommand implements Execute {
     private final Receiver receiver;

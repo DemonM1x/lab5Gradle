@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <cities>
     <city>
+        <id>10</id>
+        <name>wer</name>
+        <coordinates>
+            <x>32</x>
+            <y>43</y>
+        </coordinates>
+        <creationDate>2023-05-18T14:43:00.3244771+03:00[Europe/Moscow]</creationDate>
+        <area>45.0</area>
+        <population>432</population>
+        <metersAboveSeaLevel>32.0</metersAboveSeaLevel>
+        <climate>TROPICAL_SAVANNA</climate>
+        <government>DICTATORSHIP</government>
+        <standardOfLiving>MEDIUM</standardOfLiving>
+        <governor>
+            <birthday>2000-11-11T00:00:00</birthday>
+        </governor>
+    </city>
+    <city>
         <id>5</id>
         <name>tete</name>
         <coordinates>

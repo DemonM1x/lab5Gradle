@@ -1,6 +1,6 @@
 package org.example.factores;
 
-import org.example.сollection.Coordinates;
+import org.example.collection.Coordinates;
 
 public class CoordinatesFactory {
     public Coordinates createCoordinates(String[] args) {

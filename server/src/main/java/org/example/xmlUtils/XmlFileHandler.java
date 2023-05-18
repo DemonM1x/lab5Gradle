@@ -2,7 +2,7 @@ package org.example.xmlUtils;
 
 import org.example.exception.FileLoadingException;
 import org.example.exception.NoAccessToFileException;
-import org.example.сollection.City;
+import org.example.collection.City;
 
 import javax.xml.bind.*;
 import javax.xml.stream.XMLEventReader;
@@ -11,8 +11,8 @@ import java.io.*;
 import java.time.ZonedDateTime;
 import java.util.TreeSet;
 import java.util.logging.Logger;
-import org.example.Receiver;
-import org.example.сollection.Cities;
+
+import org.example.collection.Cities;
 
 /**
  * this class implements work with a xml file

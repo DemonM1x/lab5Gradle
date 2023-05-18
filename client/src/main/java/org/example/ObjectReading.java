@@ -9,17 +9,15 @@ import java.util.LinkedHashMap;
 /**The class from which we get data for the collection element*/
 
 public class ObjectReading {
-    private static AvailableCommands availableCommands;
     public ArrayList<String> objread(String command , LinkedHashMap<String, String> fields) {
-        availableCommands = new AvailableCommands();
-        ArrayList<String> extraArgs = new ArrayList<String>();
+        AvailableCommands availableCommands = new AvailableCommands();
+        ArrayList<String> extraArgs = new ArrayList<>();
         try {
             MessageHandler.displayToUser("Type extra data of object");
             if (!ScriptReader.getExecuteStatus()) {
                 ValidatorManager validatorManager = new ValidatorManager();
                 if(!availableCommands.scriptArgumentCommand.contains(command)) {
                     int iter = 1;
-                    /*идем по всем полям и ищем валидаторы */
                     while (iter < fields.keySet().size()) {
                         String field = fields.keySet().toArray()[iter].toString();
                         ValidateAbstract<?> validator = validatorManager.getValidator(field);
@@ -44,19 +42,19 @@ public class ObjectReading {
                     }
                 }
             } else {
-                if (ScriptReader.getReadedCommands().size() - ScriptReader
+                if (ScriptReader.getReadiedCommands().size() - ScriptReader
                         .getCurrentCommand() < ScriptReader.getCurrentCommand() + fields.size() - 3) {
-                    return new ArrayList<String>();
+                    return new ArrayList<>();
                 }
                 int startValue = ScriptReader.getCurrentCommand() + 1;
                 for (int iter1 = startValue; iter1 < startValue + fields.size() - 2; iter1++) {
-                    extraArgs.add(ScriptReader.getReadedCommands().get(iter1).trim());
+                    extraArgs.add(ScriptReader.getReadiedCommands().get(iter1).trim());
                     ScriptReader.setCurrentCommand(ScriptReader.getCurrentCommand() + 1);
                 }
             }
         } catch (NullPointerException e) {
             MessageHandler.displayToUser("\nInterrupting input stream.\n");
-            extraArgs = new ArrayList<String>();
+            extraArgs = new ArrayList<>();
         }
         return extraArgs;
     }
