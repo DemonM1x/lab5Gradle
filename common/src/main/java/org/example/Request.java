@@ -40,7 +40,7 @@ public class Request implements Serializable {
     public String toString() {
         return commandName + " "
                 + (argName != null ? argName : "")
-                + (city != null ? city : "");
+                + (city != null ? "\n"+city : "");
     }
 
     public boolean isArgInt() {

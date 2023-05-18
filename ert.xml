@@ -33,6 +33,24 @@
         </governor>
     </city>
     <city>
+        <id>9</id>
+        <name>rwe</name>
+        <coordinates>
+            <x>32</x>
+            <y>4</y>
+        </coordinates>
+        <creationDate>2023-05-15T19:21:40.5092853+03:00[Europe/Moscow]</creationDate>
+        <area>23.0</area>
+        <population>32</population>
+        <metersAboveSeaLevel>32.0</metersAboveSeaLevel>
+        <climate>STEPPE</climate>
+        <government>DICTATORSHIP</government>
+        <standardOfLiving>MEDIUM</standardOfLiving>
+        <governor>
+            <birthday>2000-11-11T00:00:00</birthday>
+        </governor>
+    </city>
+    <city>
         <id>6</id>
         <name>rew</name>
         <coordinates>
@@ -64,6 +82,24 @@
         <climate>STEPPE</climate>
         <governor>
             <birthday>2007-12-03T10:15:20</birthday>
+        </governor>
+    </city>
+    <city>
+        <id>8</id>
+        <name>re</name>
+        <coordinates>
+            <x>32</x>
+            <y>43</y>
+        </coordinates>
+        <creationDate>2023-05-06T16:51:54.1863962+03:00[Europe/Moscow]</creationDate>
+        <area>32.0</area>
+        <population>32</population>
+        <metersAboveSeaLevel>32.0</metersAboveSeaLevel>
+        <climate>TROPICAL_SAVANNA</climate>
+        <government>DICTATORSHIP</government>
+        <standardOfLiving>MEDIUM</standardOfLiving>
+        <governor>
+            <birthday>2000-11-11T00:00:00</birthday>
         </governor>
     </city>
     <city>

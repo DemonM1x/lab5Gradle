@@ -27,6 +27,10 @@ import java.util.ArrayList;
                         Request request = new Request(commandName, null);
                         System.out.println(RequestHandler.getInstance().send(request));
                     }
+                    else {
+                        Request request = new Request(commandName, null);
+                        RequestHandler.getInstance().send(request);
+                    }
                     return DataInOutStatus.SUCCESSFULLY;
                 }
                 /*проверяем команду , нужны ли ей дополнительные аргументы */

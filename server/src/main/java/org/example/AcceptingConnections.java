@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.commands.ExitSaver;
 import org.example.xmlUtils.XmlFileHandler;
 
 import java.io.ByteArrayInputStream;
@@ -17,7 +18,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
-public class AcceptingConnections {
+public class AcceptingConnections{
 
     private final Deliver deliver;
     private XmlFileHandler xmlFileHandler;
@@ -56,7 +57,7 @@ public class AcceptingConnections {
                     SelectionKey key = iter.next();
                     if (key.isAcceptable()) {
                         SocketChannel socketChannel = serverSocket.accept();
-                        logger.info("Сервер соединился с" + socketChannel.getLocalAddress());
+                        logger.info("Сервер соединился с" + socketChannel.getRemoteAddress());
                         socketChannel.configureBlocking(false);
                         socketChannel.register(selector, SelectionKey.OP_READ);
                         buffers.put(socketChannel, ByteBuffer.allocate(bufferSize));
@@ -77,22 +78,28 @@ public class AcceptingConnections {
                         ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(buffer.array()));
                         Request request = (Request) ois.readObject();
                         buffer.clear();
-                        logger.info("Server received command: " + request.toString());
-                        deliver.answer(request, socketChannel);
+                        if (request.getCommand().equals("exit")){
+                            addresses.remove(socketChannel);
+                            buffers.remove(socketChannel);
+                            socketChannel.close();
+                            continue;
+                        }
+                        else {
+                            logger.info("Server received command: " + request.toString());
+                            deliver.answer(request, socketChannel);
+                        }
 
                     }
                     iter.remove();
                 }
             }
         } catch (IOException e) {
-            logger.info("Some problem's with network!");
+            logger.info("Ошибка при закрытии сокета " + e.getMessage());
         } catch (ClassNotFoundException e) {
             logger.info("Client sent outdated request!");
+        }catch (IllegalStateException e){
+            ExitSaver exitSaver = new ExitSaver(xmlFileHandler, receiver);
+            exitSaver.run();
         }
-//        catch (InterruptedException e) {
-//            ExitSaver exitSaver = new ExitSaver(xmlFileHandler, receiver);
-//            exitSaver.run();
-//        }
-
     }
 }

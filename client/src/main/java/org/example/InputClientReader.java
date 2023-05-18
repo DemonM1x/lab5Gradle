@@ -32,8 +32,15 @@ public class InputClientReader {
                     System.out.println("Good buy");
                     break;
                 }
+                if (RequestHandler.getInstance().getSocketStatus()) {
                     MessageHandler.displayToUser("Type commands");
+                    ScriptReader.clearHistory();
+                    ScriptReader.setExecuteStatus(false);
                     inputData = inputReader.nextLine();
+                }
+                else {
+                    return DataInOutStatus.FAILED;
+                }
 
                 }
 

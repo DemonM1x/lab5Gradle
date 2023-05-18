@@ -21,7 +21,7 @@ public class MainServer {
         logger.info("Entering server!");
 
         try (ServerSocketChannel serverSocket = ServerSocketChannel.open()) {
-            int Port = 56432;
+            int Port = 56789;
             SocketAddress address = new InetSocketAddress(Port);
             serverSocket.bind(address);
             logger.info("Server listening port "+ Port);
@@ -37,6 +37,9 @@ public class MainServer {
             }
             LocalDateBase localDateBase = new LocalDateBase(xmlFileHandler.get());
             Receiver receiver = new Receiver(localDateBase);
+            ConsoleManager consoleManager = new ConsoleManager(receiver, xmlFileHandler);
+            Thread thread = new Thread(consoleManager);
+            thread.start();
             CommandManager commandManager = new CommandManager(receiver);
             Deliver deliver = new Deliver(commandManager, id, logger);
             AcceptingConnections connect = new AcceptingConnections(serverSocket,logger, deliver);

@@ -15,7 +15,7 @@ public class ObjectReading {
         ArrayList<String> extraArgs = new ArrayList<String>();
         try {
             MessageHandler.displayToUser("Type extra data of object");
-            if (!availableCommands.noArgumentCommands.contains(command)) {
+            if (!ScriptReader.getExecuteStatus()) {
                 ValidatorManager validatorManager = new ValidatorManager();
                 if(!availableCommands.scriptArgumentCommand.contains(command)) {
                     int iter = 1;
@@ -33,6 +33,7 @@ public class ObjectReading {
                         }
                         String valueOfField = InputClientReader.getInputReader().nextLine().trim();
 
+
                         /*проверяем данные которые пришли на вход*/
                         if (validator.validate(valueOfField)) {
                             extraArgs.add(valueOfField);
@@ -41,6 +42,16 @@ public class ObjectReading {
                             MessageHandler.displayToUser("You've typed wrong value of field.");
                         }
                     }
+                }
+            } else {
+                if (ScriptReader.getReadedCommands().size() - ScriptReader
+                        .getCurrentCommand() < ScriptReader.getCurrentCommand() + fields.size() - 3) {
+                    return new ArrayList<String>();
+                }
+                int startValue = ScriptReader.getCurrentCommand() + 1;
+                for (int iter1 = startValue; iter1 < startValue + fields.size() - 2; iter1++) {
+                    extraArgs.add(ScriptReader.getReadedCommands().get(iter1).trim());
+                    ScriptReader.setCurrentCommand(ScriptReader.getCurrentCommand() + 1);
                 }
             }
         } catch (NullPointerException e) {

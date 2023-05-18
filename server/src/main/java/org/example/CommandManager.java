@@ -34,10 +34,11 @@ public class CommandManager{
         commandsMap.put("add",addCommand);
         commandsMap.put("clear",clearCommand);
         commandsMap.put("remove_greater", removeGreaterCommand);
+        commandsMap.put("add_if_max", addMaxCommand);
         commandsMap.put("add_if_min", addMinCommand);
         commandsMap.put("remove_by_id", removeById);
         commandsMap.put("remove_lower", removeLowerCommand);
-        commandsMap.put("update_id", updateCommand);
+        commandsMap.put("update", updateCommand);
         commandsMap.put("show", showCommand);
         commandsMap.put("min_by_id", minById);
         commandsMap.put("help", helpCommand);

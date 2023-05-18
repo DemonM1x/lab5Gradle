@@ -6,13 +6,13 @@ import org.example.сollection.City;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.net.BindException;
 import java.net.InetSocketAddress;
-import java.net.SocketAddress;
+import java.nio.channels.SocketChannel;
 
 public class RequestHandler {
     private static RequestHandler instance;
     private InetSocketAddress socketAddress;
+    private SocketChannel socketChannel;
 
     private boolean socketStatus;
 
@@ -27,7 +27,7 @@ public class RequestHandler {
 
     public String send(Request request) {
         try {
-            ClientWorker clientWorker = new ClientWorker(socketAddress);
+            ClientWorker clientWorker = new ClientWorker(socketChannel);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(4096);
             ObjectOutputStream outputStream = new ObjectOutputStream(byteArrayOutputStream);
             outputStream.writeObject(request);
@@ -48,7 +48,12 @@ public class RequestHandler {
     public void setRemoteHostSocketAddress(InetSocketAddress aSocketAddress){
         socketAddress = aSocketAddress;
     }
-
+    public InetSocketAddress getRemoteHostSocketAddress(){
+        return socketAddress;
+    }
+    public void setRemoteHostSocketChannel(SocketChannel socketChannel){
+        this.socketChannel = socketChannel;
+    }
     public String getInformation(){
         return "Connection\n" +  "remote host address: " + socketAddress;
     }

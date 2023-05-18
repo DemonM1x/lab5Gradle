@@ -8,19 +8,13 @@ import java.nio.channels.SocketChannel;
 
 public class ClientWorker {
 
-    private final InetSocketAddress socketAddress;
     private SocketChannel socketChannel;
     private final ResponseHandler responseHandler;
 
-    public ClientWorker(InetSocketAddress aSocketAddress) {
+    public ClientWorker(SocketChannel socketChannel) {
         responseHandler = ResponseHandler.getInstance();
-        socketAddress = aSocketAddress;
-        try {
-            socketChannel = SocketChannel.open();
-            socketChannel.connect(socketAddress);
-        } catch (IOException e) {
-            System.out.println("Some problem's with network!");
-        }
+        this.socketChannel = socketChannel;
+
     }
 
     public String sendRequest(byte[] dataToSend) {
@@ -31,6 +25,7 @@ public class ClientWorker {
         } catch (IOException exception) {
             RequestHandler.getInstance().setSocketStatus(false);
             return ("\tCommand didn't send, try again!\n");
+
         }
     }
 
@@ -39,7 +34,7 @@ public class ClientWorker {
         ByteBuffer buffer = ByteBuffer.allocate(4096);
 
         while (true) {
-            if ((System.currentTimeMillis() - timeStart) < 5000) {
+            if ((System.currentTimeMillis() - timeStart) < 3000) {
                 try {
                     socketChannel.read(buffer);
                     if (buffer.position() != 0) {

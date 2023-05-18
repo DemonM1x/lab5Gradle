@@ -1,24 +1,54 @@
 package org.example;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
+import java.nio.channels.SocketChannel;
+import java.nio.channels.UnresolvedAddressException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class MainClient {
-    public static void main(String[] args) {
-  try(Scanner scanner = new Scanner(System.in)){
 
+    private static boolean reconnectionMode = false;
+    private static int attempts = 0;
+    private static final Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
         while (true) {
-            getRequestHandlerProperties(scanner, InetAddress.getLocalHost());
-            RequestHandler.getInstance().setSocketStatus(true);
-            System.out.println(RequestHandler.getInstance().getInformation());
-            InputClientReader.openStream();
-            break;
-        }
-    } catch(UnknownHostException e){
-        throw new RuntimeException(e);
+            try {
+                if (!reconnectionMode) {
+                    getRequestHandlerProperties(scanner, InetAddress.getLocalHost());
+
+                } else {
+                    Thread.sleep(7 * 1000); // 7 секунд на переподключение
+                }
+                SocketChannel socketChannel = SocketChannel.open();
+                socketChannel.connect(RequestHandler.getInstance().getRemoteHostSocketAddress());
+                RequestHandler.getInstance().setRemoteHostSocketChannel(socketChannel);
+                attempts = 0;
+                RequestHandler.getInstance().setSocketStatus(true);
+                System.out.println(RequestHandler.getInstance().getInformation());
+                InputClientReader.openStream();
+                break;
+
+            } catch (UnknownHostException e) {
+                throw new RuntimeException(e);
+            } catch (InterruptedException e) {
+                MessageHandler.displayToUser("Соединение было прервано во время бездействия. Перезапуск клиента.");
+            } catch (UnresolvedAddressException e) {
+                MessageHandler.displayToUser("Сервер с этим хостом не найден. Попробуйте снова.");
+                main(args);
+            } catch (IOException e) {
+                MessageHandler.displayToUser("Сервер недоступен. Переподключение, попытка #" + (attempts + 1));
+                reconnectionMode = true;
+                if (attempts == 4) {
+                    MessageHandler.displayToUser("Переподключение не удалось. Попробуйте подключиться позднее.");
+                    System.exit(0);
+                }
+                attempts++;
+                main(args);
+            }
         }
     }
     private static boolean requestTypeOfAddress(Scanner scanner) {
