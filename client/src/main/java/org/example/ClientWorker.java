@@ -33,20 +33,14 @@ public class ClientWorker {
         long timeStart = System.currentTimeMillis();
         ByteBuffer buffer = ByteBuffer.allocate(4096);
 
-        while (true) {
-            if ((System.currentTimeMillis() - timeStart) < 3000) {
-                try {
-                    socketChannel.read(buffer);
-                    if (buffer.position() != 0) {
-                        return responseHandler.receive(buffer);
-                    }
-                } catch (IOException ignored) {
-                    return ("Server doesn't exist!\nWait until the server is up and running ");
-                }
-            } else {
-                return ("Server isn't available at the moment! " +
-                        "Please, select another remote host!\n");
+        try {
+            socketChannel.read(buffer);
+            if (buffer.position() != 0) {
+                return responseHandler.receive(buffer);
             }
+        } catch (IOException ignored) {
+            return ("Server doesn't exist!\nWait until the server is up and running ");
         }
+        return ("Server doesn't send information");
     }
 }
