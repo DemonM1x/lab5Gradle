@@ -37,6 +37,7 @@ public class ClientWorker {
                 return responseHandler.receive(buffer);
             }
         } catch (IOException ignored) {
+            RequestHandler.getInstance().setSocketStatus(false);
             return ("Server doesn't exist!\nWait until the server is up and running ");
         }
         return ("Server doesn't send information");

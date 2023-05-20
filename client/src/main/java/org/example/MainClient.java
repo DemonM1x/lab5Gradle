@@ -15,7 +15,7 @@ public class MainClient {
     private static int attempts = 0;
     private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        while (true) {
+
             try {
                 if (!reconnectionMode) {
                     getRequestHandlerProperties(scanner, InetAddress.getLocalHost());
@@ -27,11 +27,12 @@ public class MainClient {
                 socketChannel.connect(RequestHandler.getInstance().getRemoteHostSocketAddress());
                 RequestHandler.getInstance().setRemoteHostSocketChannel(socketChannel);
                 attempts = 0;
+                reconnectionMode = false;
                 RequestHandler.getInstance().setSocketStatus(true);
                 System.out.println(RequestHandler.getInstance().getInformation());
-                InputClientReader.openStream();
-                break;
-
+                if (InputClientReader.openStream() != DataInOutStatus.SUCCESSFULLY) {
+                    main(args);
+                }
             } catch (UnknownHostException e) {
                 throw new RuntimeException(e);
             } catch (InterruptedException e) {
@@ -49,7 +50,7 @@ public class MainClient {
                 attempts++;
                 main(args);
             }
-        }
+
     }
     private static boolean requestTypeOfAddress(Scanner scanner) {
         String answer;
